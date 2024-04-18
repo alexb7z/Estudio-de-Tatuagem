@@ -24,7 +24,6 @@ int main(void) {
   char email_input [20];
   char password_input [10];
 
-  /*
   do {
     printf("Digite o seu email: ");
     scanf("%s", email_input);
@@ -36,7 +35,6 @@ int main(void) {
     scanf("%9s", password_input);
   } while (InputPasswordIsCorrect(password_input, password) == 0);
   printf("Senha correta!\n\n");
-  */
   
   printf("~<=================================>~\n");
   printf("  Bem-vindo ao estudio Tatto Artist!\n");
