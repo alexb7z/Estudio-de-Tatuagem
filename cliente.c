@@ -72,6 +72,12 @@ void adicionaFim(Lista *lista, Cliente e) {
 void lerLista(Lista *lista) {
   FILE *file = fopen("cliente.b", "rb");
   Cliente e;
+
+  if (file == NULL) {
+    printf("Erro ao abrir o arquivo cliente.b\n");
+    return;
+  }
+  
   while (fread(&e, sizeof(Cliente), 1, file)) {
     adicionaFim(lista, e);
   }
@@ -396,15 +402,26 @@ void ordenar10(int n){
 }
 */
 
-void ordenar10(int n) {
-  Lista lista;
-  lista.inicio = NULL;
-  lerLista(&lista);
+void ordenar10(Lista *lista) {
+  FILE *file = fopen("cliente.b", "rb");
+  if (file == NULL) {
+    printf("\n============\nLista vazia\n============\n\n");
+    return;
+  }
+
+  if (lista->inicio == NULL) {
+    printf("\n============\nLista vazia\n============\n\n");
+    fclose(file);
+    return;
+  }
+
+  fclose(file);
+
   int trocado;
   No *pi, *pj = NULL;
   do {
     trocado = 0;
-    pi = lista.inicio;
+    pi = lista->inicio;
     while (pi->prox != pj) {
       if (pi->dado.ficha > pi->prox->dado.ficha) {
         Cliente aux = pi->dado;
@@ -416,5 +433,6 @@ void ordenar10(int n) {
     }
     pj = pi;
   } while (trocado);
-  salvaLista(&lista);
+
+  salvaLista(lista);
 }
