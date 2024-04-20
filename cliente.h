@@ -29,7 +29,7 @@ void visualizar8(char *data);
 
 void precomedio9 (int n);
 
-void ordenar10(int n);
+void ordenar10(Lista *lista);
 
 void lerLista(Lista *lista);
 
