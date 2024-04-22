@@ -37,4 +37,8 @@ void adicionaFim(Lista *lista, Cliente e);
 
 void editarCliente(Lista* lista, int ficha, float precoTatto, char data[]);
 
+Lista* criaLista();
+
+void salvaLista(Lista *lista);
+
 #endif
