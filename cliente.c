@@ -19,6 +19,12 @@ struct lista {
   No *inicio;
 };
 
+Lista* criaLista() {
+  Lista *lista = (Lista *)malloc(sizeof(Lista));
+  lista->inicio = NULL;
+  return lista;
+}
+
 int InputEmailIsCorrect(char email_input[], char email[]) {
   int count = 0;
   for (int i = 0; i < 20; i++) {
@@ -77,7 +83,7 @@ void lerLista(Lista *lista) {
     printf("Erro ao abrir o arquivo cliente.b\n");
     return;
   }
-  
+
   while (fread(&e, sizeof(Cliente), 1, file)) {
     adicionaFim(lista, e);
   }
@@ -165,6 +171,7 @@ void cadastrar1() {
   fclose(file);
 }
 
+/*
 void listar2() {
   FILE *file = fopen("cliente.b", "rb");
   Cliente a;
@@ -181,6 +188,16 @@ void listar2() {
 
   printf("\n\n");
   fclose(file);
+}*/
+
+void listar2() {
+  Lista lista;
+  lista.inicio = NULL;
+  lerLista(&lista);
+  for (No *pi = lista.inicio; pi != NULL; pi = pi->prox) {
+    printf("Ficha: %d\n", pi->dado.ficha);
+    printf("Nome: %s\nData: %s\nPreco: %.2f\n\n", pi->dado.nome, pi->dado.data, pi->dado.precoTatto);
+  }
 }
 
 int quantidade6() {
@@ -414,7 +431,6 @@ void ordenar10(Lista *lista) {
     fclose(file);
     return;
   }
-
   fclose(file);
 
   int trocado;
