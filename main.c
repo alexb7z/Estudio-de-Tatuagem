@@ -108,8 +108,10 @@ int main(void) {
       precomedio9(n);
 
     } else if (op == 10) {
-      Lista *lista;
+      Lista *lista = criaLista();
+      lerLista(lista);
       ordenar10(lista);
+      salvaLista(lista);
     }
 
     menu();
